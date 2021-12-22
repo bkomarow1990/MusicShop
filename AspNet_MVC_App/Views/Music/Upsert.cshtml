@@ -1,0 +1,71 @@
+﻿@model AspNet_MVC_App.Models.ViewModels.MusicVM;
+@{
+    var title = "Create a New Song";
+}
+<div>
+    <form method="post" asp-action="Create">
+        @if (Model.Music != null)
+        {
+            // this is update action
+            <input asp-for="Music.Id" hidden>
+            title = "Update Music";
+        }
+
+        <h2 class="mb-3">@title</h2>
+
+        <div class="form-group row">
+            <label asp-for="Music.Name" class="col-4"></label>
+            <input asp-for="Music.Name" class="form-control col-8">
+            <span asp-validation-for="Music.Name" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Music.Performer" class="col-4"></label>
+            <input asp-for="Music.Performer" class="form-control col-8">
+            <span asp-validation-for="Music.Performer" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Music.GenreId" class="col-4"></label>
+            <select asp-for="Music.GenreId" asp-items="@Model.Genres" class="form-control col-8">
+                <option selected disabled>--Select Genre--</option>
+            </select>
+            <span asp-validation-for="Music.GenreId" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Music.PublishYear" class="col-4"></label>
+            <input asp-for="Music.PublishYear" class="form-control col-8">
+            <span asp-validation-for="Music.PublishYear" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Music.Text" class="col-4"></label>
+            <input asp-for="Music.Text" class="form-control col-8">
+            <span asp-validation-for="Music.Text" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                @*<label for="subm">
+                    @{
+                        if (Model.Music.Id == 0)
+                        {
+                            <h2>Create</h2>
+                        }
+                        else
+                        {
+                            <h2>Update</h2>
+                        }
+                    }
+                </label>*@
+                <input type="submit" id="subm" class="btn btn-success w-100" />
+                    </div>
+        
+                    <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{ <partial name="_ValidationScriptsPartial.cshtml"/> }
+}

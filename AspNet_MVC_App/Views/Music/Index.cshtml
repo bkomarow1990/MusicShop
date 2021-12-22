@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AspNet_MVC_App.Models.Music>;
+
+<div>
+    <h2 class="text-center">Music List</h2>
+
+    <div class="mb-2 text-right">
+        <a asp-controller="Music" asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Song</a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Performer</th>
+                    <th scope="col">PublishYear</th>
+                    <th scope="col">Text</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Music music in Model)
+                {
+                <tr>
+                    <td>@music.Name</td>
+                    <td>@music.Genre?.Name</td>
+                    <td>@music.Performer</td>
+                    <td>@music.PublishYear</td>
+                    <td>@music.Text</td>
+                    <td>
+                        <div class="btn-group">
+                            <a asp-controller="Music" asp-action="Upsert" asp-route-id="@music.Id" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a>
+
+                            <a asp-controller="Music" asp-action="Delete" asp-route-id="@music.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>List is empty!</p>
+    }
+</div>

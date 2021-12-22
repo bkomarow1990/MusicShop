@@ -1,0 +1,47 @@
+﻿@model AspNet_MVC_App.Models.Music;
+
+<div>
+    <form method="post" asp-action="Edit">
+        <h2 class="mb-3">Edit Car</h2>
+
+        <input asp-for="Id" hidden>
+        <div class="form-group row">
+            <label asp-for="Model" class="col-4"></label>
+            <input asp-for="Model" class="form-control col-8">
+            <span asp-validation-for="Model" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Color" class="col-4"></label>
+            <input asp-for="Color" class="form-control col-8">
+            <span asp-validation-for="Color" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CategoryId" class="col-4"></label>
+            <select asp-for="CategoryId" asp-items="@ViewBag.CategoryList" class="form-control col-8">
+                <option selected disabled>--Select Category--</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ManufactureDate" class="col-4"></label>
+            <input asp-for="ManufactureDate" class="form-control col-8">
+            <span asp-validation-for="ManufactureDate" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="fas fa-edit"></i> Update
+                </button>
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{ <partial name="_ValidationScriptsPartial.cshtml"/> }
+}

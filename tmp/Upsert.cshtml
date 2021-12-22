@@ -1,0 +1,53 @@
+﻿@model AspNet_MVC_App.Models.ViewModels.MusicVM;
+@{
+    var title = "Create a New Car";
+}
+<div>
+    <form method="post" asp-action="Create">
+        @if (Model.Car != null)
+        {
+            // this is update action
+            title = "Update Car";
+        }
+        <h2 class="mb-3">@title</h2>
+
+        <div class="form-group row">
+            <label asp-for="Car.Model" class="col-4"></label>
+            <input asp-for="Car.Model" class="form-control col-8">
+            <span asp-validation-for="Car.Model" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Car.Color" class="col-4"></label>
+            <input asp-for="Car.Color" class="form-control col-8">
+            <span asp-validation-for="Car.Color" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Car.CategoryId" class="col-4"></label>
+            <select asp-for="Car.CategoryId" asp-items="@Model.Categories" class="form-control col-8">
+                <option selected disabled>--Select Category--</option>
+            </select>
+            <span asp-validation-for="Car.CategoryId" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Car.ManufactureDate" class="col-4"></label>
+            <input asp-for="Car.ManufactureDate" class="form-control col-8">
+            <span asp-validation-for="Car.ManufactureDate" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <input type="submit" class="btn btn-success w-100" value="Create" />
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}
