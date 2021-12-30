@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNet_MVC_App.Migrations
 {
     [DbContext(typeof(SalonDbContext))]
-    [Migration("20211222182821_Init")]
+    [Migration("20211230182804_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace AspNet_MVC_App.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Musics");
                 });
 
             modelBuilder.Entity("AspNet_MVC_App.Models.Music", b =>

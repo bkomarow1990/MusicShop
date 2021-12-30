@@ -30,7 +30,7 @@ namespace AspNet_MVC_App.Data
             //optionsBuilder.UseSqlServer("Data Source=DESKTOP-O0M8V28\\SQLEXPRESS;Initial Catalog=SalonDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
-        public virtual DbSet<Music> Cars { get; set; }
+        public virtual DbSet<Music> Musics { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
     }
 }

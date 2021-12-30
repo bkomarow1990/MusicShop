@@ -62,7 +62,7 @@ namespace AspNet_MVC_App.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Musics");
                 });
 
             modelBuilder.Entity("AspNet_MVC_App.Models.Music", b =>

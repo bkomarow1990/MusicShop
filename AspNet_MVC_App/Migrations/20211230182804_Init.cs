@@ -20,7 +20,7 @@ namespace AspNet_MVC_App.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cars",
+                name: "Musics",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -33,9 +33,9 @@ namespace AspNet_MVC_App.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cars", x => x.Id);
+                    table.PrimaryKey("PK_Musics", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cars_Genres_GenreId",
+                        name: "FK_Musics_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
@@ -43,15 +43,15 @@ namespace AspNet_MVC_App.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cars_GenreId",
-                table: "Cars",
+                name: "IX_Musics_GenreId",
+                table: "Musics",
                 column: "GenreId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "Musics");
 
             migrationBuilder.DropTable(
                 name: "Genres");

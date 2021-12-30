@@ -24,7 +24,7 @@ namespace AspNet_MVC_App.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.Cars.Include(nameof(Music.Genre)));
+            return View(_context.Musics.Include(nameof(Music.Genre)));
         }
         public IActionResult Create()
         {
@@ -60,7 +60,8 @@ namespace AspNet_MVC_App.Controllers
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
-                })
+                }),
+                //Music = _context.Musics.First((el)=>el.);
             };
 
             return View(viewModel);
@@ -99,12 +100,12 @@ namespace AspNet_MVC_App.Controllers
 
             if (model.Music.Id == 0)
             {
-                _context.Cars.Add(model.Music);
+                _context.Musics.Add(model.Music);
                 _context.SaveChanges();
             }
             else
             {
-                _context.Cars.Update(model.Music);
+                _context.Musics.Update(model.Music);
                 _context.SaveChanges();
             }
             
@@ -117,7 +118,7 @@ namespace AspNet_MVC_App.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Cars.Add(model.Music);
+            _context.Musics.Add(model.Music);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
@@ -127,11 +128,11 @@ namespace AspNet_MVC_App.Controllers
         {
             if (id == null || id <= 0) return NotFound();
 
-            var carToRemove = _context.Cars.Find(id);
+            var carToRemove = _context.Musics.Find(id);
 
             if (carToRemove == null) return NotFound();
 
-            _context.Cars.Remove(carToRemove);
+            _context.Musics.Remove(carToRemove);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
@@ -141,7 +142,7 @@ namespace AspNet_MVC_App.Controllers
         {
             if (id == null || id <= 0) return NotFound();
 
-            var car = _context.Cars.Find(id);
+            var car = _context.Musics.Find(id);
 
             if (car == null) return NotFound();
 
@@ -160,7 +161,7 @@ namespace AspNet_MVC_App.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            _context.Cars.Update(obj);
+            _context.Musics.Update(obj);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));

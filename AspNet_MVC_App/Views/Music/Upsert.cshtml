@@ -3,7 +3,7 @@
     var title = "Create a New Song";
 }
 <div>
-    <form method="post" asp-action="Create">
+    <form method="post" asp-action="Upsert">
         @if (Model.Music != null)
         {
             // this is update action
@@ -37,7 +37,7 @@
         </div>
         <div class="form-group row">
             <label asp-for="Music.Text" class="col-4"></label>
-            <input asp-for="Music.Text" class="form-control col-8">
+            <textarea asp-for="Music.Text" class="form-control col-8"></textarea>
             <span asp-validation-for="Music.Text" class="offset-4 text-danger"></span>
         </div>
         <div class="form-group row">
